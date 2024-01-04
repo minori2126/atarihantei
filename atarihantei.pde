@@ -73,6 +73,42 @@ class block{
   }
   
   void collision(){
+    PVector next=PVector.add(point,move);
     
+    boolean x=this.xy.x+25>next.x-25 && this.xy.x-25<next.x+25;
+    boolean y=this.xy.y+25>next.y-25 && this.xy.y-25<next.y+25;
+    if(x && y){
+      if(move.x>0){
+        float moveX=move.x;
+        //move.x=0;
+        for(int i=0;i<moveX;i++){
+          if(this.xy.x-25<point.x+25+i)break;
+          else move.x=i;
+        }
+      }
+      if(move.x<0){
+        float moveX=move.x;
+        for(int i=0;i>moveX;i--){
+          if(this.xy.x+25>point.x-25+i)break;
+          else move.x=i;
+        }
+      }
+      if(move.y>0){
+        float moveY=move.y;
+        for(int i=0;i<moveY;i++){
+          if(this.xy.y-25<point.y+25+i)break;
+          else move.y=i;
+          
+        }
+      }
+      if(move.y<0){
+        float moveY=move.y;
+        for(int i=0;i>moveY;i--){
+          if(this.xy.y+25>point.y-25+i)break;
+          else move.y=i;
+        }
+      }
+      
+    }
   }
 }
